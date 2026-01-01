@@ -1,0 +1,63 @@
+meta:
+  name: Carlo Velarde
+  headline: Software Engineering Student
+  location: Iowa City, IA
+  email: carlo.velarde@outlook.com
+  phone: "319-555-1234"
+  website: https://carlovelarde.com
+  socials:
+    - network: LinkedIn
+      username: carlovelarde
+    - network: GitHub
+      username: carlovelarde
+
+education:
+  - id: uiowa_cs
+    institution: University of Iowa
+    area: Computer Science
+    degree: B.S.
+    location: Iowa City, IA
+    start_date: 2022-08
+    end_date: 2026-05
+    highlights:
+      - NSF REU in Cybersecurity
+      - Coursework: Databases, Networks, Operating Systems
+    tags: [computer-science, systems]
+
+experience:
+  - id: mastercard_intern
+    company: Mastercard
+    position: Software Engineer Intern
+    location: United States
+    start_date: 2025-05
+    end_date: 2025-08
+    highlights:
+      - Built Python backend services for network gateway tooling
+      - Collaborated with senior engineers on production systems
+    tags: [python, backend, networking]
+
+projects:
+  - id: git_commit_rewriter
+    name: Git Commit Rewriter
+    summary: CLI tool to clean up Git commit history
+    highlights:
+      - Designed an interactive CLI focused on human-readable workflows
+      - Implemented diff previews to guide commit rewrites
+    tags: [cli, git, developer-tools]
+
+skills:
+  - label: Languages
+    details: Python, Java, Go, JavaScript, Ruby
+  - label: Frameworks
+    details: FastAPI, React, Ruby on Rails
+  - label: Databases
+    details: MySQL, MongoDB
+  - label: Tools
+    details: Git, Docker, Linux
+
+certifications:
+  - AWS Certified Cloud Practitioner
+
+interests:
+  - Backend systems
+  - Developer tooling
