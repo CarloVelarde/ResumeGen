@@ -18,7 +18,8 @@ MVP flow (hybrid LLM + deterministic build)
 3) Send the profile + job summary to an LLM with a strict JSON output schema.
 4) Strictly validate the LLM selection against the profile.
 5) Use the JSON to deterministically build a RenderCV `cv` dictionary.
-6) Validate the result using RenderCV's official Pydantic models.
+6) Assemble a full RenderCV document with defaults and optional overrides.
+7) Validate the result using RenderCV's official Pydantic models.
 
 The LLM does selection and optional rewriting; TailorCV does formatting,
 schema compliance, and validation.
@@ -57,7 +58,7 @@ See `tailorcv/validators/rendercv_validator.py`.
 Manual smoke test
 -----------------
 Run the debug script to validate the current flow (job loader, profile loader,
-LLM selection plan, strict selection validation, mapper preview, and RenderCV validation):
+LLM selection plan, strict selection validation, mapper preview, document assembly, and RenderCV validation):
 
 ```bash
 python -m tailorcv.debug
@@ -72,10 +73,13 @@ python -m tailorcv.debug --skip-rendercv
 python -m tailorcv.debug --skip-selection
 python -m tailorcv.debug --skip-mapper
 python -m tailorcv.debug --skip-selection-validation
+python -m tailorcv.debug --skip-assembly
 ```
 
 Repository layout
 -----------------
+- `tailorcv/defaults/`: One-page-biased defaults for design/locale/settings.
+- `tailorcv/assemblers/`: Assemble full RenderCV documents with overrides.
 - `tailorcv/loaders/`: Load and validate profile and job inputs.
 - `tailorcv/mappers/`: Deterministic mapping from profile + LLM plan to RenderCV.
 - `tailorcv/schema/`: Pydantic models for profile input and RenderCV targets.
@@ -90,3 +94,4 @@ Docs
 - `docs/LLM_CONTRACT.md`: LLM JSON output contract.
 - `docs/ROADMAP.md`: MVP and next steps.
 - `docs/STYLEGUIDE.md`: Formatting, naming, and docstring conventions.
+- `docs/DECISIONS.md`: Rationale for key MVP decisions.

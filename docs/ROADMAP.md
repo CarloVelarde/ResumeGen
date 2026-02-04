@@ -8,6 +8,7 @@ Now (MVP)
 - Collect LLM selection output (JSON) with optional rewritten bullets.
 - Strictly validate selection against the profile.
 - Build RenderCV `cv` dict deterministically.
+- Assemble full document with defaults and optional overrides.
 - Validate with RenderCV official models.
 
 Next

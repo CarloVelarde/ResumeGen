@@ -8,7 +8,8 @@ Data flow
 3) LLM selection -> JSON selection plan
 4) Strict selection validation -> profile + plan consistency
 5) Deterministic mapper -> RenderCV `cv` dictionary
-6) RenderCV validation -> RenderCVModel
+6) Assemble full document with defaults/overrides
+7) RenderCV validation -> RenderCVModel
 
 Optional inputs
 ---------------
@@ -18,6 +19,8 @@ Optional inputs
 
 Key modules
 -----------
+- `tailorcv/defaults/`: One-page-biased defaults for design/locale/settings.
+- `tailorcv/assemblers/`: Assemble full RenderCV documents with overrides.
 - `tailorcv/loaders/`: Input loading and validation.
 - `tailorcv/mappers/`: Deterministic mapping to RenderCV structures.
 - `tailorcv/schema/`: Pydantic schemas for profile and RenderCV targets.
@@ -29,3 +32,7 @@ Design goals
 - Keep parsing lightweight and transparent.
 - Keep schemas aligned with RenderCV expectations.
 - Fail fast with clear validation errors.
+
+Design decisions
+----------------
+See `docs/DECISIONS.md` for recorded rationale on defaults and MVP choices.
