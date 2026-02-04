@@ -14,6 +14,10 @@ Current limitation
 - No LLM integration yet; users must manually create `selection.json` and pass `--selection`.
 - No automated test suite implemented yet; see `docs/TEST_PLAN.md`.
 
+Testing status
+--------------
+- Phase 1 tests TEST-001 through TEST-008 implemented.
+
 Next step
 ---------
 - Add LLM integration in the CLI to generate the selection plan automatically,

@@ -46,7 +46,7 @@ TEST-004: Selection validator empty resume
 - Assertions:
   - Error list includes empty resume message.
 
-TEST-005: Mapper output structure
+TEST-005: Mapper output structure (implemented)
 ---------------------------------
 - Scope: `tailorcv/mappers/rendercv_mapper.py`
 - Fixtures: `fixtures/profile_valid.yaml`, `fixtures/selection_valid.json`
@@ -56,14 +56,14 @@ TEST-005: Mapper output structure
 - Assertions:
   - `cv.sections` contains expected keys.
 
-TEST-006: Mapper respects bullet overrides
+TEST-006: Mapper respects bullet overrides (implemented)
 ------------------------------------------
 - Scope: `tailorcv/mappers/rendercv_mapper.py`
 - Fixtures: `fixtures/selection_overrides.json`, `fixtures/profile_valid.yaml`
 - Steps:
   1) Build cv dict -> assert highlights match overrides.
 
-TEST-007: Assembler defaults + overrides
+TEST-007: Assembler defaults + overrides (implemented)
 ----------------------------------------
 - Scope: `tailorcv/assemblers/rendercv_document.py`
 - Fixtures: optional design/locale/settings overrides
@@ -73,7 +73,7 @@ TEST-007: Assembler defaults + overrides
 - Assertions:
   - Output contains `cv`, `design`, `locale`, `settings`.
 
-TEST-008: CLI generate integration
+TEST-008: CLI generate integration (implemented)
 ----------------------------------
 - Scope: `tailorcv/cli/generate.py`
 - Fixtures: `fixtures/profile_valid.yaml`, `fixtures/job_min.txt`,

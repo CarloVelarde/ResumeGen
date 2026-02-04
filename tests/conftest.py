@@ -48,3 +48,8 @@ def selection_invalid_id_path(fixtures_dir: Path) -> Path:
 @pytest.fixture()
 def selection_empty_path(fixtures_dir: Path) -> Path:
     return fixtures_dir / "selection_empty.json"
+
+
+@pytest.fixture()
+def selection_overrides_path(fixtures_dir: Path) -> Path:
+    return fixtures_dir / "selection_overrides.json"
