@@ -9,6 +9,7 @@ from rendercv.schema.yaml_reader import read_yaml
 from tailorcv.llm.selection_schema import SelectionLoadError, load_selection_plan
 from tailorcv.loaders.job_loader import load_job
 from tailorcv.loaders.profile_loader import load_profile
+from tailorcv.mappers.rendercv_mapper import build_cv_dict
 from tailorcv.validators.rendercv_validator import validate_rendercv_document
 
 
@@ -113,6 +114,31 @@ def _print_selection_summary(selection_path: Path) -> None:
     print(f"Section order:  {len(plan.section_order)}")
 
 
+def _print_mapper_preview(profile_path: Path, selection_path: Path) -> None:
+    """
+    Build a RenderCV cv dict and print a brief summary of sections.
+
+    :param profile_path: Path to a profile.yaml file.
+    :type profile_path: pathlib.Path
+    :param selection_path: Path to a selection JSON file.
+    :type selection_path: pathlib.Path
+    :return: None.
+    :rtype: None
+    :raises SelectionLoadError: If the selection file is invalid.
+    """
+    profile = load_profile(profile_path)
+    plan = load_selection_plan(selection_path)
+    cv_doc = build_cv_dict(profile, plan)
+
+    sections = cv_doc.get("cv", {}).get("sections", {})
+    print("\n" + "=" * 80)
+    print("MAPPER PREVIEW OUTPUT")
+    print("=" * 80)
+    print(f"\nSections: {list(sections.keys())}")
+    for name, entries in sections.items():
+        print(f"- {name}: {len(entries)} entries")
+
+
 def main() -> int:
     """
     Run the smoke test entrypoint.
@@ -167,6 +193,11 @@ def main() -> int:
         action="store_true",
         help="Skip LLM selection plan validation output.",
     )
+    parser.add_argument(
+        "--skip-mapper",
+        action="store_true",
+        help="Skip mapper preview output.",
+    )
     args = parser.parse_args()
 
     try:
@@ -176,6 +207,8 @@ def main() -> int:
             _print_profile_summary(args.profile)
         if not args.skip_selection:
             _print_selection_summary(args.selection)
+        if not args.skip_mapper:
+            _print_mapper_preview(args.profile, args.selection)
         if not args.skip_rendercv:
             _validate_rendercv_yaml(args.rendercv)
     except RenderCVUserValidationError as exc:

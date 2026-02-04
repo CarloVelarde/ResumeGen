@@ -16,7 +16,7 @@ MVP flow (hybrid LLM + deterministic build)
 1) Load `profile.yaml` into a strongly-typed Profile object.
 2) Load `job.txt`, clean it, and extract keywords.
 3) Send the profile + job summary to an LLM with a strict JSON output schema.
-4) Use the JSON to deterministically build RenderCV YAML.
+4) Use the JSON to deterministically build a RenderCV `cv` dictionary.
 5) Validate the result using RenderCV's official Pydantic models.
 
 The LLM does selection and optional rewriting; TailorCV does formatting,
@@ -56,7 +56,7 @@ See `tailorcv/validators/rendercv_validator.py`.
 Manual smoke test
 -----------------
 Run the debug script to validate the current flow (job loader, profile loader,
-LLM selection plan, and RenderCV validation):
+LLM selection plan, mapper preview, and RenderCV validation):
 
 ```bash
 python -m tailorcv.debug
@@ -69,11 +69,13 @@ python -m tailorcv.debug --job path/to/job.txt --profile path/to/profile.yaml --
 python -m tailorcv.debug --selection path/to/selection.json
 python -m tailorcv.debug --skip-rendercv
 python -m tailorcv.debug --skip-selection
+python -m tailorcv.debug --skip-mapper
 ```
 
 Repository layout
 -----------------
 - `tailorcv/loaders/`: Load and validate profile and job inputs.
+- `tailorcv/mappers/`: Deterministic mapping from profile + LLM plan to RenderCV.
 - `tailorcv/schema/`: Pydantic models for profile input and RenderCV targets.
 - `tailorcv/validators/`: RenderCV official schema validation helpers.
 - `tailorcv/examples/`: Sample input files.
