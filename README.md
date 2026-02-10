@@ -1,6 +1,12 @@
 ResumeGen / TailorCV
 ====================
 
+<p align="center">
+  <a href="https://github.com/CarloVelarde/ResumeGen/actions/workflows/tests.yaml">
+    <img src="https://github.com/CarloVelarde/ResumeGen/actions/workflows/tests.yaml/badge.svg" alt="CI">
+  </a>
+</p>
+
 Vision
 ------
 TailorCV turns a messy job description plus a global `profile.yaml` into a
